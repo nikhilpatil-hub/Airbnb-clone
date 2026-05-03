@@ -1,0 +1,27 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-5">
+  <div class="col-8 offset-2">
+    <div class="card shadow-sm text-center p-5" style="border: none; background-color: #f8f9fa;">
+      
+      <div class="mb-4">
+        <% if (user.image && user.image.url) { %>
+            <img src="<%= user.image.url %>" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover; border: 4px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <% } else { %>
+            <i class="fa-solid fa-circle-user fa-6x text-secondary"></i>
+        <% } %>
+      </div>
+
+      <h2 class="mb-2">Hi, I'm <%= user.username %></h2>
+      <p class="text-muted"><%= user.email %></p>
+      
+      <hr class="my-4 w-50 mx-auto">
+
+      <div class="d-grid gap-2 col-md-6 mx-auto">
+        <a href="/listings/new" class="btn btn-danger">Airbnb your home</a>
+        <a href="/profile/edit" class="btn btn-outline-dark">Edit Profile</a>
+      </div>
+      
+    </div>
+  </div>
+</div>

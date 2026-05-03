@@ -1,0 +1,35 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+    <div class="col-10 offset-1">
+        <h2 class="mb-4">Manage Listings</h2>
+        
+        <% if(listings.length === 0) { %>
+            <div class="alert alert-secondary text-center p-5">
+                <h4>You aren't hosting anything yet.</h4>
+                <p>Earn extra income and unlock new opportunities by sharing your space.</p>
+                <a href="/listings/new" class="btn btn-danger mt-3">Create a Listing</a>
+            </div>
+        <% } else { %>
+            
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+                <% for(let listing of listings) { %>
+                    <div class="col mb-4">
+                        <a href="/listings/<%= listing._id %>" class="text-decoration-none">
+                            <div class="card h-100 shadow-sm listing-card">
+                                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 200px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark"><%= listing.title %></h5>
+                                    <p class="card-text text-muted small"><i class="fa-solid fa-location-dot"></i> <%= listing.location %></p>
+                                    <p class="card-text text-dark">
+                                      <strong>₹ <%= listing.price.toLocaleString("en-IN") %></strong> / night
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</div>

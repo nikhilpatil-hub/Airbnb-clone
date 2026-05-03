@@ -1,0 +1,42 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-5">
+  <div class="col-md-8 offset-md-2">
+    <div class="card shadow-sm p-4">
+      <h3 class="mb-4">Edit Profile Details</h3>
+      
+      <form action="/profile?_method=PUT" method="POST" class="needs-validation" novalidate>
+        
+        <div class="mb-3">
+            <label class="form-label text-muted">Username</label>
+            <input type="text" class="form-control" value="<%= user.username %>" disabled>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="fName" class="form-label">First Name</label>
+                <input type="text" id="fName" name="user[fName]" class="form-control" value="<%= user.fName || '' %>" required>
+            </div>
+            <div class="col-md-6">
+                <label for="lName" class="form-label">Last Name</label>
+                <input type="text" id="lName" name="user[lName]" class="form-control" value="<%= user.lName || '' %>">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" name="user[email]" class="form-control" value="<%= user.email %>" required>
+            <div class="invalid-feedback">Please provide a valid email.</div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="d-flex justify-content-between">
+            <a href="/profile" class="btn btn-outline-secondary">Cancel</a>
+            <button class="btn btn-dark">Update Details</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
