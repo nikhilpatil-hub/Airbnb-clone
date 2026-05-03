@@ -36,8 +36,9 @@ async function main() {
   await mongoose.connect(DB_URL);
 }
 
-app.listen(8080, () => {
-  console.log("server is listening to port 8080");
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`server is listening to port ${port}`);
 });
 
 app.set("view engine", "ejs");
@@ -70,9 +71,6 @@ const sessionOptions = {
   },
 };
 
-// app.get("/", (req, res) => {
-//   res.send("Hi, I am root");
-// });
 
 app.use(session(sessionOptions));
 app.use(flash());
